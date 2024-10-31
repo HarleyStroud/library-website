@@ -1,16 +1,17 @@
 
 const newBookButton = document.querySelector("#new_book_button");
 const bookDisplay = document.querySelector("#book_display");
+const newBookForm = document.querySelector("#new_book_form");
+const newBookDialog = document.querySelector('#new_book_dialog');
 
 const myLibrary = [];
-
 
 
 // Book constructor
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
-    this.author.pages = pages;
+    this.pages = pages;
     this.read = read;
 
     this.info = function() {
@@ -26,12 +27,11 @@ function Book(title, author, pages, read) {
 }
 
 
-
 function addBookToLibrary(book) {
     myLibrary.push(book);
+    newBookDialog.close();
     displayLibrary();
 }
-
 
 
 function displayLibrary() {
@@ -40,34 +40,42 @@ function displayLibrary() {
         const newBookEntry = document.createElement("div");
         newBookEntry.classList.add("book_entry");
 
-
         const titleDiv = document.createElement("div");
-        titleDiv.textContent = "BOOK TITLE";
+        titleDiv.textContent = myLibrary[i].title;
 
         const authroDiv = document.createElement("div");
-        authroDiv.textContent = "BOOK AUTHOR";
+        authroDiv.textContent = myLibrary[i].author;
 
         const pagesDiv = document.createElement("div");
-        pagesDiv.textContent = "PAGES";
+        pagesDiv.textContent = myLibrary[i].pages;
 
         const readDiv = document.createElement("div");
-        readDiv.textContent = "READ";
+        readDiv.textContent = myLibrary[i].read;
 
         newBookEntry.appendChild(titleDiv);
         newBookEntry.appendChild(authroDiv);
         newBookEntry.appendChild(pagesDiv);
         newBookEntry.appendChild(readDiv);
-
         bookDisplay.appendChild(newBookEntry);
     }
 }
 
 
-
-
 newBookButton.addEventListener('click', (event) => {
-    const newBook = new Book("TEST BOOK", "TEST AUTHOR", 666, true);
+    newBookDialog.show();
+});
+
+
+newBookForm.addEventListener('submit', (event) => {
+    const bookTitle = document.querySelector("#book_title").value;
+    const author = document.querySelector("#author").value;
+    const pages = document.querySelector("#pages").value;
+    const read = document.querySelector("#read").value;
+    const newBook = new Book(bookTitle, author, pages, read);
     addBookToLibrary(newBook);
+
+    event.preventDefault();
+    console.log(bookTitle);
 });
 
 
