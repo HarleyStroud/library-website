@@ -9,56 +9,32 @@
 	</head>
 	<body>
 
-        <div id="book_display">
-            <div class="book_entry">
-                <div>Book Title:</div>
-                <div>Book Author:</div>
-                <div>Pages:</div>
-                <div>Read:</div>
-            </div>
-            <div class="book_entry">
-                <div>Book Title:</div>
-                <div>Book Author:</div>
-                <div>Pages:</div>
-                <div>Read:</div>
-            </div>
-            <div class="book_entry">
-                <div>Book Title:</div>
-                <div>Book Author:</div>
-                <div>Pages:</div>
-                <div>Read:</div>
-            </div>
-            <div class="book_entry">
-                <div>Book Title:</div>
-                <div>Book Author:</div>
-                <div>Pages:</div>
-                <div>Read:</div>
-            </div>
-        </div>
-
         <div id="button_container">
             <button id="new_book_button">NEW BOOK</button>
         </div>
-        
 
-        <dialog open id="new_book_dialog">
+        <div id="book_display">
+        </div>
+
+     
+        <dialog id="new_book_dialog">
             <p>Enter Book Details</p>
             <form id="new_book_form" method="dialog">
                 <p>
                     <label for="book_title">Book Title</label>
-                    <input type="text" id="book_title" placeholder="Book Title">
+                    <input class="block_display_input" type="text" id="book_title" placeholder="Book Title">
                 </p>
                 <p>
                     <label for="author">Author</label>
-                    <input type="text" id="author" placeholder="Author">
+                    <input class="block_display_input" type="text" id="author" placeholder="Author">
                 </p>
                 <p>
                     <label for="pages">Pages</label>
-                    <input type="number" id="pages" placeholder="Number of Pages">
+                    <input class="block_display_input" type="number" id="pages" placeholder="Number of Pages">
                 </p>
                 <p>
                     <label for="read">Read</label>
-                    <input type="text" id="read" placeholder="Read">
+                    <input type="checkbox" id="read" placeholder="Read">
                 </p>
               
                 <button>Add Book</button>
